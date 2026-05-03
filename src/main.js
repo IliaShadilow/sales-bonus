@@ -128,8 +128,8 @@ function analyzeSalesData(data, options) {
     });
 
     // @TODO: Сортировка продавцов по прибыли
-    const sortedSellers = sellerStats.toSorted((a, b) => {
-    return b.profit - a.profit; // По убыванию (от большего к меньшему)
+    const sortedSellers = [...sellerStats].sort((a, b) => {
+    return b.profit - a.profit;
     });
 
     // @TODO: Назначение премий на основе ранжирования
@@ -140,7 +140,7 @@ function analyzeSalesData(data, options) {
     // сформировать топ 10 продавцов
     seller.top_products = Object.entries(seller.products_sold)
     .map(([sku, quantity]) => ({ sku, quantity }))
-    .toSorted((a, b) => b.quantity - a.quantity)
+    .sort((a, b) => b.quantity - a.quantity)
     .slice(0, 10);
     });
 
